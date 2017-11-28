@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Inicio-GrupoA</title>
+    </h:head>
+    <h:body>
+        <h:form>            
+            <h1><h:outputText value="Empleados"/></h1>
+            <h:link value="Nuevo Empleado" outcome="registroEmpleado"></h:link>
+            <p:dataTable value="#{empleadoController.listaEmpleados()}" var="item" paginator="true" paginatorPosition="10" emptyMessage="Hey Empleados Registrados">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cedula"/>
+                    </f:facet>
+                    <h:outputText value="#{item.cedula}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Apellido"/>
+                    </f:facet>
+                    <h:outputText value="#{item.apellido}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Sexo"/>
+                    </f:facet>
+                    <h:outputText value="#{item.sexo}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Edad"/>
+                    </f:facet>
+                    <h:outputText value="#{item.edad}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Direccion"/>
+                    </f:facet>
+                    <h:outputText value="#{item.direccion}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Telefono"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telefono}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Opciones"/>
+                    </f:facet>
+                    <h:commandLink value="Modificar" action="#{empleadoController.prepararEditEmpleado(item)}" />
+                    &nbsp;
+                    <h:commandLink value="Eliminar" action="#{empleadoController.deleteEmpleado(item)}" onclick="alert('Desea eliminar este empleado?')"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
